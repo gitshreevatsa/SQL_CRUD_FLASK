@@ -54,15 +54,19 @@ def create(body):
     result_dict = {'USN' : sUSN, 'student_name' : sName, 'Gender' : sGender, 'Entry_type': sEntry_type,'YOA': sYearOfAdmission, 'migrated': sMigrated,
              'Details_of_migration': sDetails, 'admission_in_separate_division': sadmissionInSepDiv,'adDetails': admissionDetails ,'YOP': sYop, 'degree_type': sDegreeType,
              'pu_marks': sPuMarks, 'entrance_marks': sEntranceExams}
-    return result_dict
+    return "Added successfully"
+
 
 def read():
     conn = engine.connect()
     dataview = data.select()
     result = conn.execute(dataview)
-    for row in result:
-        row_dict = dict(row)
-    return row_dict
+    #for row in result:
+    #   row_dict = dict(row)
+    print(result.fetchall())
+    print(type(result))
+    return result.fetchall()
+
 
 def update(body):
     conn = engine.connect()
